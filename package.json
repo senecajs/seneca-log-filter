@@ -1,0 +1,32 @@
+{
+  "name": "seneca-log-filter",
+  "version": "0.0.1",
+  "description": "Seneca log filtering module",
+  "main": "seneca-log-filter.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/senecajs/seneca-log-filter.git"
+  },
+  "keywords": [
+    "seneca",
+    "log",
+    "filter"
+  ],
+  "author": "David Gonzalez (nodearth@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/senecajs/seneca-log-filter/issues"
+  },
+  "homepage": "https://github.com/senecajs/seneca-log-filter#readme",
+  "devDependencies": {
+    "code": "^3.0.2",
+    "lab": "^11.0.1"
+  },
+  "dependencies": {
+    "lodash": "^4.15.0",
+    "through2": "^2.0.1"
+  }
+}
