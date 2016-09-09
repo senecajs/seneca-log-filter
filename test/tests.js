@@ -10,6 +10,7 @@ const infoLevel = {level: 'info', test: 'works'}
 const debugLevel = {level: 'debug', test: 'works'}
 const warnLevel = {level: 'warn', test: 'works'}
 const errorLevel = {level: 'error', test: 'works'}
+const fatalLevel = {level: 'fatal', test: 'works'}
 
 const LogFilter = require('../seneca-log-filter')
 
@@ -23,16 +24,51 @@ describe('log levels', () => {
     done()
   })
 
-  it('only logs in the expected levels using "+"', (done) => {
-    let filter = LogFilter({level: 'warn+'})
-    expect(filter(infoLevel)).to.be.null
-    expect(filter(warnLevel)).to.equal(warnLevel)
-    expect(filter(errorLevel)).to.equal(errorLevel)
+  it('handles aliases', (done) => {
+    let filter = LogFilter({
+      level: 'unicorn',
+      aliases: {
+        'unicorn': {
+          handled: true,
+          handler: function () { return ['info'] }
+        }
+      }
+    })
+    expect(filter(debugLevel)).to.be.null
+    expect(filter(infoLevel)).to.equal(infoLevel)
+    expect(filter(warnLevel)).to.be.null
     done()
   })
 
-  it('understand aliases matching the log level', (done) => {
-    let filter = LogFilter({alias: {info: true}})
+  it('Does not handle aliases when "handled" flag is false', (done) => {
+    let filter = LogFilter({
+      level: 'unicorn',
+      aliases: {
+        'unicorn': {
+          handled: false,
+          handler: function () { return ['info'] }
+        }
+      }
+    })
+    expect(filter(infoLevel)).to.be.null
+    done()
+  })
+
+  it('logs on info+ when no level or alias specified', (done) => {
+    let filter = LogFilter({})
     expect(filter(infoLevel)).to.equal(infoLevel)
+    expect(filter(debugLevel)).to.be.null
+    expect(filter(warnLevel)).to.equal(warnLevel)
+    done()
+  })
+
+  it('only logs in the expected levels using "+"', (done) => {
+    let filter = LogFilter({level: 'warn+'})
+    expect(filter(debugLevel)).to.be.null
+    expect(filter(infoLevel)).to.be.null
+    expect(filter(warnLevel)).to.equal(warnLevel)
+    expect(filter(errorLevel)).to.equal(errorLevel)
+    expect(filter(fatalLevel)).to.equal(fatalLevel)
+    done()
   })
 })
