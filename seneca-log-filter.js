@@ -1,31 +1,30 @@
 'use strict'
 
-const util = require('./lib/util')
+const Util = require('./lib/util')
 const _ = require('lodash')
-const through2 = require('through2')
 
-function logfilter(options) {
-  let me = this
-  
-  let level = options.level || util.infer_alias(options.alias) || 'info+'
-  
-  let calculatedLevels = [] 
+function logfilter (options) {
+  let level = options.level || Util.infer_alias(options.alias) || 'info+'
+
+  let calculatedLevels = []
   if (_.endsWith(level, '+')) {
-    calculatedLevels.concat(util.log_level_plus(level))
-  } else {
+    calculatedLevels.concat(Util.log_level_plus(level))
+  }
+  else {
     // If is not a real level... ignore.
-    if (util.level_exists(level)) {
+    if (Util.level_exists(level)) {
       calculatedLevels.push(level)
     }
   }
-  
-  return function filter(data) {
-    if (calculatedLevel.indexOf(chunk.level) !== -1) {
-      if(options['omit-metadata']) {
+
+  return function filter (data) {
+    if (calculatedLevels.indexOf(data.level) !== -1) {
+      if (options['omit-metadata']) {
         return _.omit(data, ['seneca', 'level', 'when'])
       }
       return data
     }
+    return null
   }
 }
 
