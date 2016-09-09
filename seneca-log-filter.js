@@ -6,9 +6,8 @@ const through2 = require('through2')
 
 function logfilter(options) {
   let me = this
-  this.options = options
   
-  let level = options.log.level || util.infer_alias(options.log.alias)
+  let level = options.level || util.infer_alias(options.alias) || 'info+'
   
   let calculatedLevels = [] 
   if (_.endsWith(level, '+')) {
@@ -20,12 +19,14 @@ function logfilter(options) {
     }
   }
   
-  return through2({objectMode: true}, function(chunk, enc, callback) {
+  return function filter(data) {
     if (calculatedLevel.indexOf(chunk.level) !== -1) {
-        this.push(chunk)
+      if(options['omit-metadata']) {
+        return _.omit(data, ['seneca', 'level', 'when'])
+      }
+      return data
     }
-    callback()
-  })
+  }
 }
 
 module.exports = logfilter

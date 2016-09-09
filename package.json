@@ -4,7 +4,10 @@
   "description": "Seneca log filtering module",
   "main": "seneca-log-filter.js",
   "scripts": {
-    "test": "npm test"
+    "test": "lab -v -P test -L -t 95",
+    "coveralls": "lab -s -P test -r lcov | coveralls",
+    "coverage": "lab -v -P test -L -t 80 -r html > docs/coverage.html",
+    "annotate": "docco seneca-log-filter.js lib/*.js -o docs/annotated"
   },
   "repository": {
     "type": "git",
@@ -15,7 +18,7 @@
     "log",
     "filter"
   ],
-  "author": "David Gonzalez (nodearth@gmail.com)",
+  "author": "David Gonzalez (https://www.github.com/dgonzalez)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/senecajs/seneca-log-filter/issues"
@@ -23,10 +26,12 @@
   "homepage": "https://github.com/senecajs/seneca-log-filter#readme",
   "devDependencies": {
     "code": "^3.0.2",
+    "eslint-config-seneca": "^3.0.0",
+    "eslint-plugin-hapi": "^4.0.0",
+    "eslint-plugin-standard": "^2.0.0",
     "lab": "^11.0.1"
   },
   "dependencies": {
-    "lodash": "^4.15.0",
-    "through2": "^2.0.1"
+    "lodash": "4.15.0"
   }
 }
