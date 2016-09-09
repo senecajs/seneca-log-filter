@@ -9,6 +9,7 @@ const expect = require('code').expect
 const infoLevel = {level: 'info', test: 'works'}
 const debugLevel = {level: 'debug', test: 'works'}
 const warnLevel = {level: 'warn', test: 'works'}
+const errorLevel = {level: 'error', test: 'works'}
 
 const LogFilter = require('../seneca-log-filter')
 
@@ -18,6 +19,7 @@ describe('log levels', () => {
 
     expect(filter(infoLevel)).to.equal(infoLevel)
     expect(filter(debugLevel)).to.be.null
+    expect(filter(warnLevel)).to.be.null
     done()
   })
 
@@ -25,6 +27,12 @@ describe('log levels', () => {
     let filter = LogFilter({level: 'warn+'})
     expect(filter(infoLevel)).to.be.null
     expect(filter(warnLevel)).to.equal(warnLevel)
+    expect(filter(errorLevel)).to.equal(errorLevel)
     done()
+  })
+
+  it('understand aliases matching the log level', (done) => {
+    let filter = LogFilter({alias: {info: true}})
+    expect(filter(infoLevel)).to.equal(infoLevel)
   })
 })
