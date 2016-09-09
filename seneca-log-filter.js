@@ -8,7 +8,7 @@ function logfilter (options) {
 
   let calculatedLevels = []
   if (_.endsWith(level, '+')) {
-    calculatedLevels.concat(Util.log_level_plus(level))
+    calculatedLevels = Util.log_level_plus(level.substring(0, level.length - 1))
   }
   else {
     // If is not a real level... ignore.
