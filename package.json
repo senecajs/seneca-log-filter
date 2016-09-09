@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Seneca log filtering module",
   "main": "seneca-log-filter.js",
+  "pre-commit": "test",
   "scripts": {
     "test": "lab -v -P test -L -t 90",
     "coveralls": "lab -s -P test -r lcov | coveralls",
