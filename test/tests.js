@@ -27,4 +27,24 @@ describe('log levels', () => {
     expect(filter(warnLevel)).to.equal(warnLevel)
     done()
   })
+
+  it('should filter out omit array properties', (done) => {
+    let testObj = { level: 'info', foo: 'test', bar: 'test', zed: 'test' }
+    let filter = LogFilter({level: 'info', omit: ['foo', 'bar']})
+    let output = filter(testObj)
+    let expectedOutput = { level: 'info', zed: 'test' }
+
+    expect(output).to.equal(expectedOutput)
+    done()
+  })
+
+  it('should filter out seneca metadata when omit-metadata is true', (done) => {
+    let testObj = { level: 'info', foo: 'test' }
+    let filter = LogFilter({level: 'info', 'omit-metadata': true})
+    let output = filter(testObj)
+    let expectedOutput = { foo: 'test' }
+
+    expect(output).to.equal(expectedOutput)
+    done()
+  })
 })

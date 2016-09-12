@@ -19,10 +19,14 @@ function logfilter (options) {
 
   return function filter (data) {
     if (calculatedLevels.indexOf(data.level) !== -1) {
+      let ret = _.clone(data)
       if (options['omit-metadata']) {
-        return _.omit(data, ['seneca', 'level', 'when'])
+        ret = _.omit(ret, ['seneca', 'level', 'when'])
       }
-      return data
+      if (options.omit && _.isArray(options.omit)) {
+        ret = _.omit(ret, options.omit)
+      }
+      return ret
     }
     return null
   }
