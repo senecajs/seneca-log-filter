@@ -22,6 +22,11 @@
     "filter"
   ],
   "author": "David Gonzalez (https://www.github.com/dgonzalez)",
+  "contributors": [
+   "Dean McDonnell (https://github.com/mcdonnelldean)",
+    "Mihai Dima (https://github.com/mihaidma)",
+    "Emer Rutherford (https://github.com/eeswr)"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/senecajs/seneca-log-filter/issues"
