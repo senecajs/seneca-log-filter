@@ -1,6 +1,6 @@
 {
   "name": "seneca-log-filter",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Seneca log filtering module",
   "main": "seneca-log-filter.js",
   "pre-commit": [
@@ -23,7 +23,7 @@
   ],
   "author": "David Gonzalez (https://www.github.com/dgonzalez)",
   "contributors": [
-   "Dean McDonnell (https://github.com/mcdonnelldean)",
+    "Dean McDonnell (https://github.com/mcdonnelldean)",
     "Mihai Dima (https://github.com/mihaidma)",
     "Emer Rutherford (https://github.com/eeswr)"
   ],
