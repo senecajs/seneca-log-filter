@@ -1,6 +1,7 @@
 'use strict'
 
 const Util = require('./lib/util')
+const Aliases = require('./lib/aliases')
 const _ = require('lodash')
 
 function logfilter (options) {
@@ -17,7 +18,8 @@ function logfilter (options) {
   }
   // No level nor level+... it must be a custom alias
   else {
-    let aliasInfo = options.aliases[level]
+    let processedAliases = Object.assign(Aliases, options.aliases)
+    let aliasInfo = processedAliases[level]
     if (aliasInfo) {
       let handled = _.get(aliasInfo, 'handled', true)
       if (handled) {
