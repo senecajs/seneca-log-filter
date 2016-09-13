@@ -91,4 +91,25 @@ describe('log levels', () => {
     expect(output).to.equal(expectedOutput)
     done()
   })
+
+  it('understands the Seneca standard alias "all"', (done) => {
+    let filter = LogFilter({level: 'all'})
+    expect(filter({level: 'info'})).to.equal({level: 'info'})
+    done()
+  })
+
+  it('can override Seneca standard aliases', (done) => {
+    let filter = LogFilter({
+      level: 'all',
+      aliases: {
+        'all': {
+          handled: true,
+          handler: function () { return ['fatal'] }
+        }
+      }
+    })
+    expect(filter({level: 'fatal'})).to.equal({level: 'fatal'})
+    expect(filter({level: 'warn'})).to.be.null
+    done()
+  })
 })
