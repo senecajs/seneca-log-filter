@@ -9,6 +9,8 @@
 [![Dependency Status][david-badge]][david-url]
 [![Gitter chat][gitter-badge]][gitter-url]
 
+- __Sponsor:__ [nearForm][Sponsor]
+
 ## Examples
 
 ```js
@@ -69,3 +71,4 @@ Licensed under [MIT][].
 [pr]: https://github.com/senecajs/seneca-log-filter/pulls
 [contrib]: ./CONTRIBUTING.md
 [contribGuide]: http://senecajs.org/contribute/
+[Sponsor]: http://nearform.com
