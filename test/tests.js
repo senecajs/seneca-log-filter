@@ -104,11 +104,11 @@ describe('log levels', () => {
       aliases: {
         'all': {
           handled: true,
-          handler: function () { return ['info'] }
+          handler: function () { return ['fatal'] }
         }
       }
     })
-    expect(filter({level: 'info'})).to.equal({level: 'info'})
+    expect(filter({level: 'fatal'})).to.equal({level: 'fatal'})
     expect(filter({level: 'warn'})).to.be.null
     done()
   })
