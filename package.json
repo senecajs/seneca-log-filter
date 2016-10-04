@@ -2,7 +2,7 @@
   "name": "seneca-log-filter",
   "version": "0.1.0",
   "description": "Seneca log filtering module",
-  "main": "seneca-log-filter.js",
+  "main": "log-filter.js",
   "pre-commit": [
     "test"
   ],

@@ -12,7 +12,7 @@ const warnLevel = {level: 'warn', test: 'works'}
 const errorLevel = {level: 'error', test: 'works'}
 const fatalLevel = {level: 'fatal', test: 'works'}
 
-const LogFilter = require('../seneca-log-filter')
+const LogFilter = require('../')
 
 describe('log levels', () => {
   it('gets the log level from the "level" property', (done) => {
