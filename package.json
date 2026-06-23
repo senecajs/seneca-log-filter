@@ -1,5 +1,5 @@
 {
-  "name": "seneca-log-filter",
+  "name": "@seneca/log-filter",
   "version": "0.1.0",
   "description": "Seneca log filtering module",
   "main": "log-filter.js",
