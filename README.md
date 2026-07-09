@@ -1,30 +1,40 @@
 ![Seneca](http://senecajs.org/files/assets/seneca-logo.png)
-> A [Seneca.js](http://senecajs.org) Log Filter Module
+> A [Seneca.js][] plugin
 
+# @seneca/log-filter
 
-# seneca-log-filter
-[![npm version][npm-badge]][npm-url]
-[![Build Status][travis-badge]][travis-url]
-[![Coverage Status][coveralls-badge]][coveralls-url]
-[![Dependency Status][david-badge]][david-url]
-[![Gitter chat][gitter-badge]][gitter-url]
+| ![Voxgig](https://www.voxgig.com/res/img/vgt01r.png) | This open source module is sponsored and supported by [Voxgig](https://www.voxgig.com). |
+|---|---|
+
+## Install
 
 | ![Voxgig](https://www.voxgig.com/res/img/vgt01r.png) | This open source module is sponsored and supported by [Voxgig](https://www.voxgig.com). |
 |---|---|
 
 - __Sponsor:__ [nearForm][Sponsor]
 
-## Examples
+## Quick Example
 
 ```js
-var LogFilter = require('seneca-log-filter')
-var filter = LogFilter({'omit-metadata': true, level: 'info' })
-var obj = {level: 'info', foo: 'test', bar: 'test' }
-
-var filteredObj = filter(obj)
-
-// filteredObj is equal to {foo: 'test', bar: 'test' }
+require('seneca')({
+  log: { map: [{level: 'error+'}] }
+})
 ```
+
+## More Examples
+
+See [test/](test/) for usage examples.
+
+## Motivation
+
+Provides log filtering for Seneca microservices, allowing you to control which log entries are displayed.
+
+## Support
+
+If you're using this module and need help, you can:
+
+- Post a [github issue][]
+- Tweet to [@senecajs][]
 
 ## API
 
@@ -37,27 +47,25 @@ var filteredObj = filter(obj)
 #### Returns
 A function which can be called on an object to filter properties out of it.
 
-## Test
-
-```sh
-npm test
-```
-
 ## Contributing
 
-This module follows the general [Senecajs org][] contribution guidelines, and encourages open participation. If you feel you can help in any way, or discover any Issues, feel free to [create an issue][issue] or [create a pull request][pr]!
+The [Senecajs org][] encourages open participation. If you feel you can help in any way, be it with documentation, examples, extra testing, or new features please get in touch.
 
-If you wish to read more on our guidelines, feel free to
+### Running tests
 
-  - Checkout the concise [contribution file][contrib]
-  - Checkout our much more indepth [contributing guidelines][contribGuide]
+```sh
+npm run test
+```
 
+## Background
 
-## License
+See [examples](https://github.com/senecajs/seneca-log-filter/tree/main/examples) for more usage.
 
-Copyright (c) 2016, David Gonzalez.
-Licensed under [MIT][].
-
+[![npm version][npm-badge]][npm-url]
+[![Build Status][travis-badge]][travis-url]
+[![Coverage Status][coveralls-badge]][coveralls-url]
+[![Dependency Status][david-badge]][david-url]
+[![Gitter chat][gitter-badge]][gitter-url]
 [MIT]: ./LICENSE
 [npm-badge]: https://badge.fury.io/js/seneca-log-filter.svg
 [npm-url]: https://badge.fury.io/js/seneca-log-filter
